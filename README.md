@@ -20,18 +20,9 @@ A simple and responsive task management application built with React. The projec
 * CSS
 * React Hooks (useState, useEffect)
 
-## Installation
+## Live Demo
 
-```bash
-npm install
-npm start
-```
-
-The application will run locally at:
-
-```bash
-http://localhost:3000
-```
+https://task-manager-silk-phi-27.vercel.app/
 
 ## Learning Objectives
 
