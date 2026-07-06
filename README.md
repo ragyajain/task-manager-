@@ -6,7 +6,7 @@ A modern and responsive Task Manager application built with **React.js**. The pr
 
 ## 🚀 Live Demo
 
-🔗 **Live Application:** task-manager-silk-phi-27.vercel.app
+🔗 **Live Application:** https://task-manager-silk-phi-27.vercel.app/
 
 ## 💻 GitHub Repository
 
