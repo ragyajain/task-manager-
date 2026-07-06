@@ -3,10 +3,7 @@ import TaskItem from "./TaskItem";
 import EmptyState from "./EmptyState";
 
 function TaskList({ tasks, onToggleComplete, onDelete, onEdit }) {
-  if (tasks.length === 0) {
-    return <EmptyState />;
-  }
-
+  if (tasks.length === 0) return <EmptyState />;
   return (
     <ul className="task-list">
       {tasks.map((task) => (
@@ -21,5 +18,4 @@ function TaskList({ tasks, onToggleComplete, onDelete, onEdit }) {
     </ul>
   );
 }
-
 export default TaskList;

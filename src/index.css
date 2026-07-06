@@ -1,29 +1,89 @@
-* {
+/* ============================================================
+   GLOBAL CSS VARIABLES — the entire app's visual tokens.
+   Dark mode simply overrides these variables on body.dark-mode,
+   so no component needs duplicated dark-mode selectors.
+   ============================================================ */
+:root {
+  /* Backgrounds */
+  --bg:           #FAF7F2;
+  --card:         #FFFFFF;
+  --card-alt:     #F7F3EE;
+
+  /* Brand */
+  --primary:        #8E7DBE;
+  --primary-light:  #EDE9F7;
+  --primary-hover:  #7A6BAA;
+  --secondary:      #C8B6E2;
+
+  /* Semantic */
+  --success:        #A8D5BA;
+  --success-light:  #E8F6EE;
+  --warning:        #F5D491;
+  --warning-light:  #FEF7E2;
+  --danger:         #F5A9A9;
+  --danger-light:   #FEE8E8;
+  --accent:         #D8C4B6;
+
+  /* Typography */
+  --text:         #3D3D3D;
+  --text-muted:   #9B8EA0;
+  --text-light:   #B8AEBF;
+
+  /* Borders & Shadows */
+  --border:       #EAE4F0;
+  --shadow-sm:    0 1px 4px rgba(142, 125, 190, 0.06);
+  --shadow:       0 2px 16px rgba(142, 125, 190, 0.10);
+  --shadow-hover: 0 8px 28px rgba(142, 125, 190, 0.18);
+
+  /* Shape */
+  --radius:    16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+
+  /* Transitions */
+  --transition: 0.2s ease;
+}
+
+/* ---- Dark Mode overrides (only variables change) ---- */
+body.dark-mode {
+  --bg:             #1A1825;
+  --card:           #232033;
+  --card-alt:       #2B2840;
+
+  --primary:        #A494D4;
+  --primary-light:  #2C2844;
+  --primary-hover:  #B8ACE0;
+
+  --success-light:  #1A2E25;
+  --warning-light:  #2E2810;
+  --danger-light:   #2E1818;
+
+  --text:       #EAE5F2;
+  --text-muted: #8278A0;
+  --text-light: #584E6E;
+
+  --border:       #342F4A;
+  --shadow-sm:    0 1px 4px rgba(0,0,0,0.25);
+  --shadow:       0 2px 16px rgba(0,0,0,0.35);
+  --shadow-hover: 0 8px 28px rgba(0,0,0,0.45);
+}
+
+/* ---- Global Reset ---- */
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  background-color: #f5f6fa;
-  color: #1f2333;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color var(--transition), color var(--transition);
 }
 
-body.dark-mode {
-  background-color: #15171f;
-  color: #eceef5;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-}
-
-input,
-select {
-  font-family: inherit;
-}
+button { font-family: inherit; cursor: pointer; border: none; }
+input, select, textarea { font-family: inherit; }

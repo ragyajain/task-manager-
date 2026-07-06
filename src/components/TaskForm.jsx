@@ -1,77 +1,126 @@
 import React, { useState, useEffect } from "react";
+import { FiPlus, FiEdit2 } from "react-icons/fi";
+import { CATEGORIES } from "../helpers";
+
+const MAX_CHARS = 100;
 
 function TaskForm({ onAddTask, onUpdateTask, editingTask, onCancelEdit }) {
-  // Local state for the form fields
-  const [title, setTitle] = useState("");
-  const [priority, setPriority] = useState("Low");
+  const [title, setTitle]       = useState("");
+  const [priority, setPriority] = useState("Medium");
+  const [category, setCategory] = useState("Personal");
+  const [dueDate, setDueDate]   = useState("");
 
-  // Whenever "editingTask" changes, fill the form with its data.
+  // When editingTask changes, fill the form with its values
   useEffect(() => {
     if (editingTask) {
       setTitle(editingTask.title);
       setPriority(editingTask.priority);
+      setCategory(editingTask.category || "Personal");
+      setDueDate(editingTask.dueDate || "");
     } else {
-      // No task being edited -> reset the form to empty/default values
       setTitle("");
-      setPriority("Low");
+      setPriority("Medium");
+      setCategory("Personal");
+      setDueDate("");
     }
   }, [editingTask]);
 
-  // Runs when the form is submitted (Add button or Enter key)
-  function handleSubmit(event) {
-    event.preventDefault(); // stop the page from refreshing
+  function handleSubmit(e) {
+    e.preventDefault();
+    const trimmed = title.trim();
+    if (!trimmed) return;
 
-    const trimmedTitle = title.trim();
-    if (trimmedTitle === "") return; // ignore empty tasks
+    const payload = { title: trimmed, priority, category, dueDate };
 
     if (editingTask) {
-      // We are editing an existing task -> send the updated data up
-      onUpdateTask({ ...editingTask, title: trimmedTitle, priority });
+      onUpdateTask({ ...editingTask, ...payload });
     } else {
-      // We are creating a brand new task
-      onAddTask({ title: trimmedTitle, priority });
+      onAddTask(payload);
     }
 
-    // Clear the form after submit
     setTitle("");
-    setPriority("Low");
+    setPriority("Medium");
+    setCategory("Personal");
+    setDueDate("");
   }
 
+  const charsLeft = MAX_CHARS - title.length;
+  const counterClass =
+    charsLeft <= 0 ? "at-limit" : charsLeft <= 15 ? "near-limit" : "";
+
   return (
-    <form className="task-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="task-input"
-        placeholder="What needs to be done?"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-      />
+    <div className="task-form-card">
+      <h2>{editingTask ? "Edit Task" : "New Task"}</h2>
 
-      <select
-        className="priority-select"
-        value={priority}
-        onChange={(event) => setPriority(event.target.value)}
-      >
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-      </select>
+      <form onSubmit={handleSubmit}>
+        {/* Title input with character counter */}
+        <div className="form-title-row">
+          <input
+            type="text"
+            className="task-input"
+            placeholder="What needs to be done?"
+            value={title}
+            maxLength={MAX_CHARS}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <span className={`char-counter ${counterClass}`}>
+            {title.length} / {MAX_CHARS}
+          </span>
+        </div>
 
-      <button type="submit" className="btn btn-primary">
-        {editingTask ? "Save Changes" : "Add Task"}
-      </button>
+        {/* Priority, Category, Due Date */}
+        <div className="form-fields-row">
+          <div className="form-select-wrapper">
+            <select
+              className="form-select"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
+              <option value="Low">🟢 Low</option>
+              <option value="Medium">🟡 Medium</option>
+              <option value="High">🔴 High</option>
+            </select>
+          </div>
 
-      {/* Only show Cancel button while editing */}
-      {editingTask && (
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={onCancelEdit}
-        >
-          Cancel
-        </button>
-      )}
-    </form>
+          <div className="form-select-wrapper">
+            <select
+              className="form-select"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              {CATEGORIES.map((cat) => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+          </div>
+
+          <input
+            type="date"
+            className="form-date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+        </div>
+
+        {/* Action buttons */}
+        <div className="form-actions">
+          <button type="submit" className="btn-primary">
+            {editingTask ? <FiEdit2 /> : <FiPlus />}
+            {editingTask ? "Save Changes" : "Add Task"}
+          </button>
+
+          {editingTask && (
+            <button
+              type="button"
+              className="btn-ghost"
+              onClick={onCancelEdit}
+            >
+              Cancel
+            </button>
+          )}
+        </div>
+      </form>
+    </div>
   );
 }
 
