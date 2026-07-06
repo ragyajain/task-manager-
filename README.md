@@ -1,48 +1,166 @@
 # 📝 Task Manager
 
-A simple and responsive task management application built with React. The project allows users to create, organize, and track tasks efficiently while practicing core React concepts such as state management, hooks, component composition, and CRUD operations.
+A modern and responsive Task Manager application built with **React.js**. The project helps users organize daily tasks efficiently with features like task categorization, due dates, progress tracking, dark mode, and persistent storage using Local Storage.
 
-## Features
+---
 
-* Add, edit, and delete tasks
-* Mark tasks as completed
-* Filter tasks by status (All, Completed, Pending)
-* Search tasks by title
-* Set task priorities
-* Dark mode support
-* Persistent storage using Local Storage
-* Responsive user interface
+## 🚀 Live Demo
 
-## Tech Stack
+🔗 **Live Application:** task-manager-silk-phi-27.vercel.app
 
-* React
-* JavaScript 
-* CSS
-* React Hooks (useState, useEffect)
+## 💻 GitHub Repository
 
-## Installation
+🔗 **Repository:** https://github.com/ragyajain/task-manager-.git
 
+---
+
+## ✨ Features
+
+- ✅ Create, edit, and delete tasks (CRUD)
+- ✅ Mark tasks as completed
+- 🔍 Search tasks instantly
+- 🎯 Filter tasks (All, Pending, Completed)
+- 📊 Progress tracking with statistics
+- 📅 Due date support
+- 🏷️ Category-based task management
+- 🚩 Priority levels (Low, Medium, High)
+- 🌙 Dark/Light Mode
+- 💾 Local Storage persistence
+- 🗑️ Delete confirmation modal
+- 🔔 Toast notifications
+- 📱 Responsive design for mobile, tablet, and desktop
+- 🎨 Modern pastel-inspired UI with smooth animations
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React.js
+- JavaScript (ES6)
+- HTML5
+- CSS3
+
+### React Concepts Used
+
+- Functional Components
+- Props
+- useState
+- useEffect
+- Custom Hooks
+- Controlled Components
+- Conditional Rendering
+- Component Composition
+
+### Browser APIs
+
+- Local Storage
+
+### Libraries
+
+- React Icons
+- React Toastify
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+│
+├── components/
+│   ├── TaskForm.jsx
+│   ├── TaskList.jsx
+│   ├── TaskItem.jsx
+│   ├── SearchBar.jsx
+│   ├── FilterBar.jsx
+│   ├── TaskCounter.jsx
+│   ├── ProgressCard.jsx
+│   ├── DarkModeToggle.jsx
+│   ├── DeleteModal.jsx
+│   └── EmptyState.jsx
+│
+├── hooks/
+│   └── useLocalStorage.js
+│
+├── utils/
+│   └── helpers.js
+│
+├── App.jsx
+├── App.css
+└── index.js
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Move into the project:
+
+```bash
+cd task-manager
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm start
+```
 
-The application will run locally at: http://localhost:3000
+---
 
-## Learning Objectives
+## 🎯 Learning Outcomes
 
-This project was built to practice:
+This project demonstrates:
 
-* React Components
-* Props
-* State Management
-* Event Handling
-* Conditional Rendering
-* CRUD Operations
-* Custom Hooks
-* Local Storage
+- React component architecture
+- CRUD operations
+- State management using Hooks
+- Custom Hook implementation
+- Local Storage integration
+- Reusable component design
+- Responsive UI development
+- Modern UI/UX principles
+- Git & GitHub workflow
+- Project deployment using Vercel
 
-## Future Enhancements
+---
 
-* Due dates
-* Task categories
-* Backend integration
-* User authentication
+## 🔮 Future Enhancements
+
+- User Authentication (JWT)
+- Backend Integration (Node.js + Express.js)
+- MongoDB Database
+- User-specific task management
+- Drag & Drop task ordering
+- Calendar View
+- Task reminders & notifications
+- Recurring tasks
+- Team collaboration
+
+---
+
+## 📸 Screenshots
+
+![task-manager](image.png)
+
+---
+
+## 👩‍💻 Author
+
+**Ragya Jain**
+
+Built as a React frontend project to strengthen core React concepts, component-based architecture, and modern UI development.
